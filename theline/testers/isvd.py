@@ -1,7 +1,7 @@
 import numpy as np
 
-from linal.svd import ColumnIncrementalSVD as CISVD
-from linal.svd import get_multiplied_svd as get_ms
+from theline.svd import ColumnIncrementalSVD as CISVD
+from theline.svd import get_multiplied_svd as get_ms
 from whitehorses.loaders.simple import GaussianLoader as GL
 from whitehorses.servers.minibatch import Batch2Minibatch as B2M
 
@@ -21,7 +21,7 @@ class ColumnIncrementalSVDTester:
 
         self.data = self.loader.get_data().T
 
-        (U, s, VT) = np.linalg.svd(self.data)
+        (U, s, VT) = np.thelineg.svd(self.data)
 
         self.U = U[:,:self.k]
         self.s = s[:self.k]
@@ -43,10 +43,10 @@ class ColumnIncrementalSVDTester:
             if t > self.k and and_right:
                 print('t', t)
 
-                U_loss = np.linalg.norm(Ut - self.U)**2
-                s_loss = np.linalg.norm(st - self.s)**2
+                U_loss = np.thelineg.norm(Ut - self.U)**2
+                s_loss = np.thelineg.norm(st - self.s)**2
                 VT_comp = self.VT[:,:VTt.shape[1]]
-                VT_loss = np.linalg.norm(VTt - VT_comp)**2
+                VT_loss = np.thelineg.norm(VTt - VT_comp)**2
 
                 print('U loss', U_loss)
                 print('s loss', s_loss)

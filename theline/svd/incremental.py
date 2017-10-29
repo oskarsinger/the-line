@@ -1,7 +1,7 @@
 import numpy as np
 
-from linal.utils import get_multi_dot
-from linal.svd import get_multiplied_svd as get_ms
+from theline.utils import get_multi_dot
+from theline.svd import get_multiplied_svd as get_ms
 
 # TODO: take care of centering
 
@@ -57,13 +57,13 @@ class ColumnIncrementalSVD:
 
         if self.num_rounds == 0:
             self.m = A.shape[0]
-            (Q_bar, B) = np.linalg.qr(A)
+            (Q_bar, B) = np.thelineg.qr(A)
             B_bar = np.diag(B)
             W_bar = np.eye(lt)
         else:
             (Q_hat, B_hat) = self._get_QB_hat(A)
             W_hat = self._get_W_hat(lt)
-            (G_u, B_bar, G_vT) = np.linalg.svd(
+            (G_u, B_bar, G_vT) = np.thelineg.svd(
                 B_hat, full_matrices=False)
             Q_bar = np.dot(Q_hat, G_u)
             W_bar = np.dot(W_hat, G_vT.T)
@@ -92,7 +92,7 @@ class ColumnIncrementalSVD:
         kt = min(self.k, self.l)
         C = np.dot(self.Q.T, A)
         pre_QR = A - np.dot(self.Q, C)
-        (Q_perp, B_perp) = np.linalg.qr(pre_QR)
+        (Q_perp, B_perp) = np.thelineg.qr(pre_QR)
         Q_hat = np.hstack([self.Q, Q_perp])
         B_hat = np.zeros((kt + lt, kt + lt))
         B_hat[:kt,:kt] += np.diag(self.B)

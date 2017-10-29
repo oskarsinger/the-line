@@ -1,7 +1,7 @@
 import numpy as np
 
-from linal.svd import get_svd_power
-from linal.utils import get_multi_dot
+from theline.svd import get_svd_power
+from theline.utils import get_multi_dot
 
 def get_rotation(dim, angle, P, P_inv=None):
 

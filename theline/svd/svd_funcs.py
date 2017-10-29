@@ -1,6 +1,6 @@
 import numpy as np
 
-from linal.utils import get_multi_dot, get_largest_entries, get_safe_power
+from theline.utils import get_multi_dot, get_largest_entries, get_safe_power
 
 def get_schatten_p_norm(A, p, energy=0.95, k=None):
 
@@ -11,7 +11,7 @@ def get_schatten_p_norm(A, p, energy=0.95, k=None):
 
 def get_transformed_sv(A, get_trans, energy=0.95, k=None):
 
-    s = np.linalg.svd(A, compute_uv=False)
+    s = np.thelineg.svd(A, compute_uv=False)
     s = get_largest_entries(s, energy=energy, k=k)
 
     return get_trans(s)
@@ -24,7 +24,7 @@ def get_svd_power(A, power, energy=0.95, k=None):
 
 def get_transformed_svd(A, get_trans, energy=0.95, k=None):
 
-    (U, s, Vh) = np.linalg.svd(A)
+    (U, s, Vh) = np.thelineg.svd(A)
     s = get_largest_entries(s, energy=energy, k=k)
     transformed_s = get_trans(s)
 

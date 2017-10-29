@@ -1,8 +1,8 @@
 import numpy as np
 
-from numpy.linalg import svd
+from numpy.thelineg import svd
 
-from linal.random import get_orthonormal_basis as get_ob
+from theline.random import get_orthonormal_basis as get_ob
 
 def get_svd(A, k=None, q=2):
 

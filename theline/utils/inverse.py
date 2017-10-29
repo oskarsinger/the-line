@@ -2,7 +2,7 @@ import numpy as np
 
 from .products import get_multi_dot as gmd
 from .products import get_quadratic as gq
-from linal.svd import get_svd_power
+from theline.svd import get_svd_power
 
 def get_woodbury_inversion(H, rho):
 
