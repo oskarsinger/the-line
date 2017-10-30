@@ -1,6 +1,6 @@
 import numpy as np
 
-from numpy.thelineg import svd
+from numpy.linalg import svd
 
 from theline.random import get_orthonormal_basis as get_ob
 

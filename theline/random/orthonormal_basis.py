@@ -1,6 +1,6 @@
 import numpy as np
 
-from numpy.thelineg import qr
+from numpy.linalg import qr
 
 def get_orthonormal_basis(A, k, q=2):
 
