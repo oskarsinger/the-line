@@ -6,4 +6,5 @@ setup(
     packages=[
         'theline',
         'theline.random',
+        'theline.sketching',
         'theline.utils'])
