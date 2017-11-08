@@ -15,3 +15,11 @@ class RandomOrthogonalSystemSketcher:
     def get_sketched(self, A):
 
         pass
+
+    def get_unsketched(self, A):
+
+        pass
+
+    def get_matrix(self):
+
+        pass

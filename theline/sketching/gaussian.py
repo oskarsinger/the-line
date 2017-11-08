@@ -20,3 +20,7 @@ class GaussianSketcher:
     def get_unsketched(self, A):
 
         return np.dot(self.S, A)
+
+    def get_matrix(self):
+
+        return self.S
