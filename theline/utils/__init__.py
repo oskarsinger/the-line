@@ -4,3 +4,4 @@ from .misc import *
 from .inverse import *
 from .rotation import *
 from .permutation import *
+from .planted import *
