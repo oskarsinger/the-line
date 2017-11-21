@@ -39,7 +39,3 @@ def get_multiplied_svd(U, s, Vh):
         sigma[i,i] = s[i]
 
     return get_multi_dot([U, sigma, Vh])
-
-def _get_sigma(n, p, s):
-
-    return sigma
