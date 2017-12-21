@@ -11,28 +11,55 @@ class RowIncrementalSVD:
     def __init__(self, k):
 
         self.k = k
+        self.U = None
+        self.Sigma = None
+        self.VT = None
 
-        self.Q = None
-        self.B = None
-        self.W = None
-        self.m = None
-        self.l = 0
         self.num_rounds = 0
 
     def get_update(self, A):
 
-        Q_bar = None
-        B_bar = None
-        W_bar = None
-        lt = A.shape[0]
-
         if self.num_rounds == 0:
             self.m = A.shape[1]
+            (self.U, self.Sigma, self.VT) = np.linalg.svd(A)
         else:
-            pass
+            (U_new, Sigma_new, VT_new) = np.linalg.svd(A)
+            L = np.dot(A, self.VT)
+            H = A - np.dot(L, self.VT.T)
+            V_H = np.linalg.qr(H)[0]
+            R = self._get_R(L, H, V_H)
 
-    def _get_QB_hat(self, A):
-        pass
+            self._set_new_svd(R, V_H)
+
+        return (self.U, self.Sigma, self.VT)
+
+    def _set_new_svd(self, R
+
+        (U_R, Sigma_R, VT_R) = np.linalg.svd(R)
+
+        diff = U_R.shape[0] - self.U.shape[1]
+        rows = self.U.shape[0] + diff
+        cols = self.U.shape[1] + diff
+        padded = np.zeros((rows, cols))
+
+        padded[:self.U.shape[0],:self.U.shape[1]] += self.U
+        padded[self.U.shape[0]:,self.U.shape[1]:] += np.eye(diff)
+
+        self.U = np.dot(padded, U_R)
+        self.Sigma = Sigma_R
+
+        self.VT = np.dot(VT_R, np.vstack([self.VT, V_H]))
+
+    def _get_R(self, L, H, V_H):
+
+        R_rows = self.m + L.shape[0]
+        R_cols = self.m + self.VT.shape[1]
+        R = np.zeros((R_rows, R_cols))
+        R[:self.m,:self.m] += self.Sigma
+        R[self.m:,:self.m] += L
+        R[self.m:,self.m:] += np.dot(H, V_H.T)
+
+        return R
 
 # TODO: cite Baker 2008 paper
 class ColumnIncrementalSVD:
