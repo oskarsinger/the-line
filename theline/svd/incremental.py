@@ -33,7 +33,7 @@ class RowIncrementalSVD:
 
         return (self.U, self.Sigma, self.VT)
 
-    def _set_new_svd(self, R
+    def _set_new_svd(self, R, V_H):
 
         (U_R, Sigma_R, VT_R) = np.linalg.svd(R)
 
