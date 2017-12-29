@@ -1,10 +1,5 @@
 import numpy as np
 
-from theline.utils import get_multi_dot
-from theline.svd import get_multiplied_svd as get_ms
-
-# TODO: take care of centering
-
 # TODO: cite Markos 2016 paper
 class RowIncrementalSVD:
 
