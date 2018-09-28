@@ -47,14 +47,10 @@ def get_thresholded(x, upper=None, lower=None):
     new_x = np.copy(x)
 
     if upper is not None:
-        upper = np.ones_like(x) * upper
-        upper_idx = new_x > upper
-        new_x[upper_idx] = upper[upper_idx]
+        new_x = np.minimum(upper, new_x)
 
     if lower is not None:
-        lower = np.ones_like(x) * lower
-        lower_idx = new_x < lower
-        new_x[lower_idx] = lower[lower_idx]
+        new_x = np.maximum(lower, new_x)
 
     return new_x
 
